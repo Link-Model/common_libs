@@ -1,0 +1,6 @@
+[submodule "pico-sdk"]
+	path = pico-sdk
+	url = git@github.com:raspberrypi/pico-sdk.git
+[submodule "lib/pico-mcp2515"]
+	path = lib/pico-mcp2515
+	url = git@github.com:adamczykpiotr/pico-mcp2515.git
