@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+openocd -f interface/cmsis-dap.cfg -f target/rp2040.cfg -c "adapter speed 5000" &
+OPENOCD_PID=$!
+
+sleep 5
+
+if ps -p $OPENOCD_PID > /dev/null
+then
+  gdb-multiarch "$1"
+
+  if ps -p $OPENOCD_PID > /dev/null
+  then
+    echo "Stopping OpenOCD"
+    kill $OPENOCD_PID
+  fi
+else
+  echo "OpenOCD failed to start"
+fi
